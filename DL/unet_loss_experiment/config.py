@@ -1,0 +1,7 @@
+IMAGE_H = 128
+IMAGE_W = 128
+N_CHANNELS = 3
+N_CLASSES = 1
+
+BATCH_SIZE = 16
+N_EPOCHS = 60 # training time ~10 min
