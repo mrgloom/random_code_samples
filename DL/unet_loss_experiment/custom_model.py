@@ -1,8 +1,16 @@
 from keras.layers import MaxPooling2D, Conv2D, Conv2DTranspose
 from keras.layers import concatenate
 
-def get_unet(inputs, n_classes):
-    conv1 = Conv2D(32, (3, 3), activation='relu', padding='same')(inputs)
+from coord_conv_layer import CoordinateChannel2D
+
+def get_unet(inputs, n_classes, is_use_coord_conv=False):
+
+    if is_use_coord_conv:
+        x = CoordinateChannel2D()(inputs)
+    else:
+        x = inputs
+
+    conv1 = Conv2D(32, (3, 3), activation='relu', padding='same')(x)
     conv1 = Conv2D(32, (3, 3), activation='relu', padding='same')(conv1)
     pool1 = MaxPooling2D(pool_size=(2, 2))(conv1)
 

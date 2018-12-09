@@ -15,3 +15,6 @@ Pipeline: mask in range [0,1] as single pixel + BN + linear activation + mae los
 mse loss : 
 Pipeline: mask in range [0,1] as single pixel + BN + linear activation + mse loss -> Fail [Comment: activations not zero pred_min: -0.0097 - pred_max: 0.0117 and y_true_sum: 16.0000, y_pred_sum: 16.0000]
 Pipeline: mask in range [0,1] as single pixel + multiplier + BN + linear activation + mse loss -> Fail [Comment: converges to constant y_true_sum: 262128.0000 - y_pred_sum: 262127.0678 , nans in val_loss]
+
+coord conv:
+mask in range [0,1] as single pixel + cord_conv + sigmoid + weighted bce loss -> Fail [Comment: converges to large blobs with same number of iterations]
